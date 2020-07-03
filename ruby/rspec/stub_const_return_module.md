@@ -56,6 +56,24 @@ It creates it as a module since modules are so often used as namespaces (e.g. My
 `stub_const("#{MODEL}::CONST, 2)` とすることで、実行時評価を行うようにして対応しているというものがあった。
 試してみたら正常に動いた。
 
+```ruby
+describe SubClass do
+  context 'stub_const test' do
+    let(:number) { 200 } 
+  
+    before do
+      stub_const("#{BaseClass}::TEST_CONST", number)
+    end
+    
+    let(:sub_class_instance) { described_class.new }
+    
+    it 'get number' do
+      expect(sub_class_instance.number).to eq(number)
+    end
+  end
+end
+```
+
 
 # 参考
 
