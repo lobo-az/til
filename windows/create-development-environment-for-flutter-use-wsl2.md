@@ -41,3 +41,26 @@ WSL2の$HOME以下にflutterをインストールしたり、Android SDKをイ�
 
 Visual Studio Codeで編集する場合は、flutterのソースコードがあるディレクトリを指定して
 フォルダを開いて編集するようにする。そうしないと定期的にWSL2とWindows 10上のVisual Studio Codeのコネクションが切れてしまう。
+
+# この方法には欠点があった
+
+いざ、開発を進めていて、ホットリロードが行えない問題に行き着いた。
+Windows 10上で動かしているVS Codeがflutter runで動作しているVMに接続することができない。
+
+環境構築用に参考にしていたStack Overflowの記事に書かれていた。
+
+https://stackoverflow.com/questions/62857688/how-to-make-flutter-work-on-wsl2-using-hosts-emulator
+
+```
+You cannot use "hot reload" features with flutter app because the process of deployment/running never finishes, however the package did be installed and running in your emulator, but for any changes in source code, you need re-run the app.
+```
+
+アプリケーションを更新するたびにflutter runを起動しなおすのはつらいので、ほかに方法がないものか検索をしてみた。
+flutter runをオプション付きで起動することでJSON RPCモードで立ち上げることで、
+プロセスに対してメッセージを投げてhot reload対応させるという方法があるらしい。
+
+[手動で Flutter Android アプリに hot reload 命令を送るメモ(2020 年 1 月 14 日時点)](https://qiita.com/syoyo/items/37d5f22689bb50217858)
+
+しかし、これもまた手間がかかる。
+
+OSネイティブで開発を進めてしまったほうが楽なのかもしれない。
