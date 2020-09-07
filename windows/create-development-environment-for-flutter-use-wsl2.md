@@ -64,3 +64,11 @@ flutter runをオプション付きで起動することでJSON RPCモードで�
 しかし、これもまた手間がかかる。
 
 OSネイティブで開発を進めてしまったほうが楽なのかもしれない。
+
+# ADB カスタム Socket設定未対応
+
+Flutterは、2020/9/7現在、ADBのカスタム Socket通信未対応とのことであった。
+
+[Support custom ADB sockets while debugging](https://github.com/flutter/flutter/issues/61604)
+
+`flutter attach` について、リモートマシンに対して実行可能になれば問題が解決する。
